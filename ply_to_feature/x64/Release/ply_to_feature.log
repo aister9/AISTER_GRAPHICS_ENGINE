@@ -1,21 +1,6 @@
-﻿  Main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': 매크로 재정의
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\3rdParty\GLFW\glfw3.h(123): message : 'APIENTRY'의 이전 정의를 참조하십시오.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(31,24): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(35,22): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(43,15): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(45,15): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(47,15): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(49,16): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(51,16): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(53,16): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(55,16): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\plyData.h(57,16): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\Renderer.h(57,1): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\ply_to_feature\Renderer.h(71,1): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다.
-  0 of 563 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  코드를 생성하고 있습니다.
+  58 of 573 functions (10.1%) were compiled, the rest were copied from previous compilation.
+    18 functions were new in current compilation
+    7 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   ply_to_feature.vcxproj -> C:\Users\HPC YW\Desktop\GRAPHICS_ENGINE\AISTER_GRAPHICS_ENGINE\x64\Release\ply_to_feature.exe

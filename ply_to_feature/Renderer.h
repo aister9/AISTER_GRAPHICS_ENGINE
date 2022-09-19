@@ -45,7 +45,7 @@ namespace AISTER_GRAPHICS_ENGINE {
 			shader->call();
 
 			glm::mat4 trs = data->getTRS();
-			glm::mat4 MVPmat = trs * cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0,0,0), glm::vec3(0,0,1));
+			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0,0,0), glm::vec3(0,0,1)) * trs;
 
 			GLuint location_MVP = glGetUniformLocation(shader->shaderProgram, "MVP");
 			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVPmat[0][0]);

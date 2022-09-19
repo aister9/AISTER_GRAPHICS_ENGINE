@@ -72,7 +72,7 @@ namespace AISTER_GRAPHICS_ENGINE {
 							int idx = 0;
 							m_file >> tmp;
 							idx = atoi(tmp.c_str());
-							faces.push_back(idx - 1);
+							faces.push_back(idx);
 						}
 					}
 				}

@@ -8,7 +8,7 @@
 using namespace std;
 
 glm::mat4 projection;
-glm::vec3 camPos(30, 0, 0);
+glm::vec3 camPos(0, 30, 0);
 glm::mat4 view;
 
 bool glfwewInit(GLFWwindow** window, int width, int height) {
@@ -46,13 +46,13 @@ bool glfwewInit(GLFWwindow** window, int width, int height) {
 int main(int argc, char* args[]) {
 
     GLFWwindow* window;
-    int width = 1280, height = 960;
+    int width = 640, height = 480;
 
     if (!glfwewInit(&window, width, height)) return -1;
 
-    AISTER_GRAPHICS_ENGINE::PLYdata plys("example/BBQSauce.ply");
+    AISTER_GRAPHICS_ENGINE::PLYdata plys("example/Cherries.ply");
     plys.print();
-    AISTER_GRAPHICS_ENGINE::Texture tex("example/BBQSauce.png");
+    AISTER_GRAPHICS_ENGINE::Texture tex("example/Cherries.png");
 
     AISTER_GRAPHICS_ENGINE::Shader sh;
     sh.initShaders("mesh_vertex.glsl", "mesh_frag.glsl");
@@ -66,6 +66,17 @@ int main(int argc, char* args[]) {
     cam._far = 1000.f;
     
     cam.screenResolution = glm::vec2(width, height);
+
+    cout << "camera matrix : " << glm::to_string(cam.getProjectionMatrix()) << endl;
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // m2c values
+    glm::mat4 m2c(glm::vec4(0.04992853, 0.001840242, -0.001938306, 0), glm::vec4(-4.371726E-05, -0.03569358, -0.03501383, 0), glm::vec4(0.002672364, -0.03496545, 0.03564093, 0), glm::vec4(1.21034, 0.8187663, -2.933632,1));
+    
+    // fx, fy, cx, cy, w, h, znear, zfar
+    // Unity -> GL change to (fx, fy) -> (-fx, -fy)
+    glm::mat4 persp = AISTER_GRAPHICS_ENGINE::getPerspectiveUsingK(572.4124, 573.5692, 320, 240, 640, 480, 0.01f, 4.5f);
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
@@ -90,9 +101,6 @@ int main(int argc, char* args[]) {
         glDepthFunc(GL_LESS);
         renderer.Draw(cam, glm::vec4(1, 0, 0, 1));
 
-        /*
-            GL-get FrameBuffer to Texture
-        */
         glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, frameImage);
 
 

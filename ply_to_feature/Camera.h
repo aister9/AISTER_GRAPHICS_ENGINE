@@ -22,4 +22,10 @@ namespace AISTER_GRAPHICS_ENGINE {
 			return glm::lookAt(position, direction, up);
 		}
 	};
+
+	glm::mat4 getPerspectiveUsingK(float fx, float fy, float cx, float cy, int w, int h, float znear, float zfar) {
+		float fovy = 2 * glm::atan(h / (2 * fy));
+
+		return glm::perspective(fovy, (float)w / (float)h, znear, zfar);
+	}
 }
