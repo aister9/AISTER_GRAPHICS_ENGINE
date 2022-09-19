@@ -2,9 +2,11 @@
 
 uniform vec4 mtlColor;
 
-out vec4 color;
+uniform sampler2D textures;
 
+out vec4 color;
+in vec2 TexCoord;
 
 void main() {
-	color = mtlColor;
+	color = texture(textures, TexCoord);
 }

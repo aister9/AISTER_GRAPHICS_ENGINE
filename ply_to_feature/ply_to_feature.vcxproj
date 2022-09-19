@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>3rdParty, 3rdParty/bin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/3rdParty;$(ProjectDir)/3rdParty/bin</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

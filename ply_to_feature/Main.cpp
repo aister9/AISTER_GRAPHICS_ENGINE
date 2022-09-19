@@ -1,6 +1,4 @@
 #include <iostream>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
 #include "glHeaders.h"
 #include "plyData.h"
 #include "Texture.h"
@@ -54,13 +52,13 @@ int main(int argc, char* args[]) {
 
     AISTER_GRAPHICS_ENGINE::PLYdata plys("example/BBQSauce.ply");
     plys.print();
-    AISTER_GRAPHICS_ENGINE::Texture tex("example/BBQSauce.tex");
+    AISTER_GRAPHICS_ENGINE::Texture tex("example/BBQSauce.png");
 
     AISTER_GRAPHICS_ENGINE::Shader sh;
     sh.initShaders("mesh_vertex.glsl", "mesh_frag.glsl");
 
     AISTER_GRAPHICS_ENGINE::plyRenderer renderer;
-    renderer.SetShaderPLY(&plys, &sh);
+    renderer.SetShaderPLY(&plys, &sh, &tex);
     cout << "check" << endl;
 
     AISTER_GRAPHICS_ENGINE::Camera cam;
