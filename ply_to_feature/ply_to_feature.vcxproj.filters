@@ -50,6 +50,12 @@
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="keypoint_utils.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="mesh_vertex.glsl">

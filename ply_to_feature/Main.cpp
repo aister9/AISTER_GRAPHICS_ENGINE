@@ -8,7 +8,7 @@
 using namespace std;
 
 glm::mat4 projection;
-glm::vec3 camPos(0, 30, 0);
+glm::vec3 camPos(30, 0, 0);
 glm::mat4 view;
 
 bool glfwewInit(GLFWwindow** window, int width, int height) {
@@ -52,6 +52,8 @@ int main(int argc, char* args[]) {
 
     AISTER_GRAPHICS_ENGINE::PLYdata plys("example/Cherries.ply");
     plys.print();
+    plys.position = -1.f * plys.getCeneter();
+    cout << "r : " << plys.get_r_bbox() << endl;
     AISTER_GRAPHICS_ENGINE::Texture tex("example/Cherries.png");
 
     AISTER_GRAPHICS_ENGINE::Shader sh;

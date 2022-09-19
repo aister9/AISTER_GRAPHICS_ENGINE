@@ -145,8 +145,10 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="glHeaders.h" />
+    <ClInclude Include="keypoint_utils.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="plyData.h" />
     <ClInclude Include="Renderer.h" />
