@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "Shader.h"
 #include "Renderer.h"
+#include "Scene.h"
 
 using namespace std;
 
@@ -61,7 +62,6 @@ int main(int argc, char* args[]) {
 
     AISTER_GRAPHICS_ENGINE::plyRenderer renderer;
     renderer.SetShaderPLY(&plys, &sh, &tex);
-    cout << "check" << endl;
 
     AISTER_GRAPHICS_ENGINE::Camera cam;
     cam.position = camPos;
@@ -71,6 +71,10 @@ int main(int argc, char* args[]) {
 
     cout << "camera matrix : " << glm::to_string(cam.getProjectionMatrix()) << endl;
     
+    AISTER_GRAPHICS_ENGINE::Scene test(glm::vec2(width, height));
+    test.Render();
+    test.saveToPNG("test1.png");
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // m2c values
     glm::mat4 m2c(glm::vec4(0.04992853, 0.001840242, -0.001938306, 0), glm::vec4(-4.371726E-05, -0.03569358, -0.03501383, 0), glm::vec4(0.002672364, -0.03496545, 0.03564093, 0), glm::vec4(1.21034, 0.8187663, -2.933632,1));
