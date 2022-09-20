@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include "Renderer.h"
 #include "Scene.h"
+#include "keypoint_utils.h"
 
 using namespace std;
 
@@ -72,9 +73,21 @@ int main(int argc, char* args[]) {
     cout << "camera matrix : " << glm::to_string(cam.getProjectionMatrix()) << endl;
     
     AISTER_GRAPHICS_ENGINE::Scene test(glm::vec2(width, height));
-    test.Render();
+    test.pushRenderer(&renderer);
+    test.setCamera(cam);
+    test.Render(false);
     test.saveToPNG("test1.png");
+    test.Render(true);
+    test.saveToPNG("test2.png");
+    
+    Keypoint_utils utils;
+    
+    vector<glm::vec3> camposes = utils.CameraPositions(3, 3, plys.get_r_bbox() / 0.035 * 0.18);
 
+    for(auto vv : camposes){
+        cout << glm::to_string(vv) << endl;
+    }
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // m2c values
     glm::mat4 m2c(glm::vec4(0.04992853, 0.001840242, -0.001938306, 0), glm::vec4(-4.371726E-05, -0.03569358, -0.03501383, 0), glm::vec4(0.002672364, -0.03496545, 0.03564093, 0), glm::vec4(1.21034, 0.8187663, -2.933632,1));
@@ -96,16 +109,27 @@ int main(int argc, char* args[]) {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     unsigned char* frameImage = (unsigned char*)malloc(sizeof(unsigned char) * width * height * 4);
+    unsigned char* frameImage2 = (unsigned char*)malloc(sizeof(unsigned char) * width * height * 4);
+
+    bool drawdepth = false;
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
         view = glm::lookAt(camPos, glm::vec3(0, 0, 0), glm::vec3(0, 0, 1));
 
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glDepthFunc(GL_LESS);
+        renderer.Draw(cam, glm::vec4(1, 0, 0, 1), true);
+
+        glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, frameImage2);
+
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         glDepthFunc(GL_LESS);
-        renderer.Draw(cam, glm::vec4(1, 0, 0, 1));
+        renderer.Draw(cam, glm::vec4(1, 0, 0, 1), false);
 
         glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, frameImage);
 
@@ -117,6 +141,11 @@ int main(int argc, char* args[]) {
     imgs.data = frameImage;
     cv::flip(imgs, imgs, 0);
     cv::imwrite("test.png", imgs);
+
+    cv::Mat imgs2(height, width, CV_8UC4);
+    imgs2.data = frameImage2;
+    cv::flip(imgs2, imgs2, 0);
+    cv::imwrite("test3.png", imgs2);
 
     glfwDestroyWindow(window);
     glfwTerminate();

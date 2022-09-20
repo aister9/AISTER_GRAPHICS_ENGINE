@@ -5,9 +5,15 @@
 #include "Texture.h"
 
 namespace AISTER_GRAPHICS_ENGINE {
-	class plyRenderer {
-		unsigned int VBO, VAO, EBO, UVBO;
+	class Renderer {
+	public:
 		Shader* shader;
+		void Draw();
+	};
+
+
+	class plyRenderer : public Renderer{
+		unsigned int VBO, VAO, EBO, UVBO;
 		PLYdata* data;
 		Texture* textures;
 
@@ -41,7 +47,23 @@ namespace AISTER_GRAPHICS_ENGINE {
 			glEnableVertexAttribArray(1);
 		}
 
-		void Draw(Camera cam, glm::vec4 color) {
+		void Draw(Camera cam, bool depthOption = false) {
+			shader->call();
+
+			glm::mat4 trs = data->getTRS();
+			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1)) * trs;
+
+			GLuint location_MVP = glGetUniformLocation(shader->shaderProgram, "MVP");
+			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVPmat[0][0]);
+			GLuint location_isDepth = glGetUniformLocation(shader->shaderProgram, "drawDepth");
+			glUniform1i(location_isDepth, depthOption);
+
+			glBindTexture(GL_TEXTURE_2D, textures->texture);
+			glBindVertexArray(this->VAO);
+			glDrawElements(GL_TRIANGLES, data->faces.size(), GL_UNSIGNED_INT, 0);
+		}
+
+		void Draw(Camera cam, glm::vec4 color, bool depthOption = false) {
 			shader->call();
 
 			glm::mat4 trs = data->getTRS();
@@ -51,6 +73,8 @@ namespace AISTER_GRAPHICS_ENGINE {
 			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVPmat[0][0]);
 			GLuint location_color = glGetUniformLocation(shader->shaderProgram, "mtlColor");
 			glUniform4fv(location_color, 1, &(color)[0]);
+			GLuint location_isDepth = glGetUniformLocation(shader->shaderProgram, "drawDepth");
+			glUniform1i(location_isDepth, depthOption);
 
 			glBindTexture(GL_TEXTURE_2D, textures->texture);
 			glBindVertexArray(this->VAO);
