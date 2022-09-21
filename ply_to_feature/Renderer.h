@@ -53,7 +53,8 @@ namespace AISTER_GRAPHICS_ENGINE {
 			shader->call();
 
 			glm::mat4 trs = data->getTRS();
-			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1)) * trs;
+			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)) * trs;
+			//glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix() * trs;
 
 			GLuint location_MVP = glGetUniformLocation(shader->shaderProgram, "MVP");
 			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVPmat[0][0]);
@@ -91,6 +92,8 @@ namespace AISTER_GRAPHICS_ENGINE {
 			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVP[0][0]);
 			GLuint location_color = glGetUniformLocation(shader->shaderProgram, "mtlColor");
 			glUniform4fv(location_color, 1, &(color)[0]);
+			GLuint location_isDepth = glGetUniformLocation(shader->shaderProgram, "drawDepth");
+			glUniform1i(location_isDepth, false);
 
 			glBindTexture(GL_TEXTURE_2D, textures->texture);
 			glBindVertexArray(this->VAO);

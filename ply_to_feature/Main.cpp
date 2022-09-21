@@ -9,9 +9,7 @@
 
 using namespace std;
 
-glm::mat4 projection;
 glm::vec3 camPos(30, 0, 0);
-glm::mat4 view;
 
 bool glfwewInit(GLFWwindow** window, int width, int height) {
     if (!glfwInit()) return false; // glfw √ ±‚»≠
@@ -53,7 +51,7 @@ int main(int argc, char* args[]) {
 
     AISTER_GRAPHICS_ENGINE::PLYdata plys("example/Cherries.ply");
     plys.print();
-    plys.position = -1.f * plys.getCeneter();
+    plys.position = -1.f * plys.getCenter();
     cout << "r : " << plys.get_r_bbox() << endl;
     AISTER_GRAPHICS_ENGINE::Texture tex("example/Cherries.png");
 
@@ -82,13 +80,10 @@ int main(int argc, char* args[]) {
     Keypoint_utils utils(glm::vec2(640, 480));
     utils.Init("example/Cherries.ply", "example/Cherries.png");
     utils.save_render_image("render");
+    utils.FindKeypoint();
     
     vector<glm::vec3> camposes = utils.CameraPositions(3, 3, plys.get_r_bbox() / 0.035 * 0.18);
-
-    for(auto vv : camposes){
-        cout << glm::to_string(vv) << endl;
-    }
-    
+        
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // m2c values
     glm::mat4 m2c(glm::vec4(0.04992853, 0.001840242, -0.001938306, 0), glm::vec4(-4.371726E-05, -0.03569358, -0.03501383, 0), glm::vec4(0.002672364, -0.03496545, 0.03564093, 0), glm::vec4(1.21034, 0.8187663, -2.933632,1));
@@ -103,12 +98,6 @@ int main(int argc, char* args[]) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); glBlendEquation(GL_FUNC_ADD);
     glDepthFunc(GL_LESS);
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //Camera Matrix Example//
-    projection = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 4.5f);
-    view = glm::lookAt(camPos, glm::vec3(0, 0, 0), glm::vec3(0, 0, 1));
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     unsigned char* frameImage = (unsigned char*)malloc(sizeof(unsigned char) * width * height * 4);
     unsigned char* frameImage2 = (unsigned char*)malloc(sizeof(unsigned char) * width * height * 4);
 
@@ -116,7 +105,6 @@ int main(int argc, char* args[]) {
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        view = glm::lookAt(camPos, glm::vec3(0, 0, 0), glm::vec3(0, 0, 1));
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -130,7 +118,8 @@ int main(int argc, char* args[]) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         glDepthFunc(GL_LESS);
-        renderer.Draw(cam, glm::vec4(1, 0, 0, 1), false);
+        //renderer.Draw(cam, glm::vec4(1, 0, 0, 1), false);
+        renderer.Draw(persp * m2c, glm::vec4(1, 0, 0, 1));
 
         glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, frameImage);
 

@@ -22,12 +22,14 @@ namespace AISTER_GRAPHICS_ENGINE {
 
         glm::vec2 renderResolution;
         uchar* renderImage;
+        float* depthTexture;
 
         Scene(glm::vec2 _RenderResolution, std::string name = "Hdden window") {
             renderResolution = _RenderResolution;
             this->name = name;
 
             renderImage = new uchar[renderResolution.x * renderResolution.y * 4];
+            depthTexture = new float[renderResolution.x * renderResolution.y];
 
             (windows) = glfwCreateWindow(renderResolution.x, renderResolution.y, name.c_str(), nullptr, nullptr);
             glfwHideWindow(windows);
@@ -55,7 +57,7 @@ namespace AISTER_GRAPHICS_ENGINE {
             glBindTexture(GL_TEXTURE_2D,0);
         }
 
-        void Render(bool depth) {
+        void Render(bool depth, glm::vec4 background_color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f)) {
             int a = 0; 
             glEnable(GL_BLEND);
             glEnable(GL_DEPTH_TEST);
@@ -65,7 +67,7 @@ namespace AISTER_GRAPHICS_ENGINE {
             while (!glfwWindowShouldClose(windows) && a++ <=2) {
                 glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 
-                glClearColor(0.1f, 0.2f, 0.2f, 1.0f);
+                glClearColor(background_color.r, background_color.g, background_color.b, background_color.a);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +78,7 @@ namespace AISTER_GRAPHICS_ENGINE {
                 }
 
                 glReadPixels(0, 0, renderResolution.x, renderResolution.y, GL_BGRA, GL_UNSIGNED_BYTE, renderImage);
+                glReadPixels(0, 0, renderResolution.x, renderResolution.y, GL_RED, GL_FLOAT, depthTexture);
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,6 +109,12 @@ namespace AISTER_GRAPHICS_ENGINE {
         void saveToPNG(std::string filepath) {
             cv::Mat imgs(renderResolution.y, renderResolution.x, CV_8UC4);
             imgs.data = renderImage;
+            cv::flip(imgs, imgs, 0);
+            cv::imwrite(filepath, imgs);
+        }
+
+        void saveToEXR(std::string filepath) {
+            cv::Mat imgs(renderResolution.y, renderResolution.x, CV_32FC1, depthTexture);
             cv::flip(imgs, imgs, 0);
             cv::imwrite(filepath, imgs);
         }

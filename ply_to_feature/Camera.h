@@ -29,6 +29,14 @@ namespace AISTER_GRAPHICS_ENGINE {
 
 			return glm::lookAt(position, target, up) * glm::mat4(1.0f);
 		}
+
+		void setFOV_K(float fx, float fy, int w, int h, float znear, float zfar) {
+			float fovy = 2 * glm::atan(h / (2 * fy));
+			screenResolution.x = w;
+			screenResolution.y = h;
+			_near = znear;
+			_far = zfar;
+		}
 	};
 
 	glm::mat4 getPerspectiveUsingK(float fx, float fy, float cx, float cy, int w, int h, float znear, float zfar) {

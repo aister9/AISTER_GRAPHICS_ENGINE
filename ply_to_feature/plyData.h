@@ -85,30 +85,30 @@ namespace AISTER_GRAPHICS_ENGINE {
 			std::cout << "Postion : " << position.x << ", " << position.y << ", " << position.z << std::endl;
 			std::cout << "Rotation: " << rotation.w << ", " << rotation.x << ", " << rotation.y << ", " << rotation.z << std::endl;
 			std::cout << "Scale: " << scale.x << ", " << scale.y << ", " << scale.z << std::endl;
-			std::cout << "Center: " << glm::to_string(getCeneter()) << std::endl;
+			std::cout << "Center: " << glm::to_string(getCenter()) << std::endl;
 		}
 
-		glm::vec3 getCeneter() {
+		glm::vec3 getCenter() {
 			glm::vec3 center(0, 0, 0);
 
 			for (auto v : vertices) {
-				center = center + v  * (1 / (float)vertices.size());
+				center = center + v * scale * (1 / (float)vertices.size());
 			}
 
 			return center;
 		}
 
 		bbox get_3d_bbox() {
-			glm::vec3 _min(vertices[0]);
-			glm::vec3 _max(vertices[0]);
+			glm::vec3 _min(vertices[0] * scale);
+			glm::vec3 _max(vertices[0] * scale);
 
 			for (auto v : vertices) {
-				_min = glm::min(_min, v);
-				_max = glm::max(_max, v);
+				_min = glm::min(_min, v * scale);
+				_max = glm::max(_max, v * scale);
 			}
 
 			bbox res;
-			res.ceneter = (_min + _max) * 0.5f;
+			res.center = (_min + _max) * 0.5f;
 			res.size = (_max - _min);
 
 			return res;
