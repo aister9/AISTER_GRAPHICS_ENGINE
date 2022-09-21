@@ -1,5 +1,6 @@
 #pragma once
 #include "glHeaders.h"
+#include "Scene.h"
 #include <vector>
 
 std::vector<float> linspace(float start, float end, size_t points);
@@ -8,8 +9,53 @@ std::vector<float> linspace(float start, float end, size_t points);
 class Keypoint_utils {
 
 public:
+    AISTER_GRAPHICS_ENGINE::Scene *scene; 
+    AISTER_GRAPHICS_ENGINE::PLYdata* plys;
+    glm::vec2 resolution;
 
+    Keypoint_utils(glm::vec2 resol) {
+        scene = new AISTER_GRAPHICS_ENGINE::Scene(resol, "test");
+        resolution = resol;
+    }
 
+    void Init(std::string plyPath, std::string texPath, int width = 640, int height = 480) {
+        AISTER_GRAPHICS_ENGINE::PLYdata* data = new AISTER_GRAPHICS_ENGINE::PLYdata(plyPath);
+        data->position = -1.f * data->getCeneter();
+        plys = data;
+        AISTER_GRAPHICS_ENGINE::Texture* tex = new AISTER_GRAPHICS_ENGINE::Texture(texPath);
+
+        AISTER_GRAPHICS_ENGINE::Shader* sh = new AISTER_GRAPHICS_ENGINE::Shader();
+        sh->initShaders("mesh_vertex.glsl", "mesh_frag.glsl");
+
+        AISTER_GRAPHICS_ENGINE::plyRenderer *renderer = new AISTER_GRAPHICS_ENGINE::plyRenderer();
+        renderer->SetShaderPLY(data, sh, tex);
+
+        data->print();
+
+        scene->pushRenderer(renderer);
+    }
+
+    void save_render_image(std::string folderPath) {
+        std::vector<glm::vec3> camposes = CameraPositions(3, 3, plys->get_r_bbox() / 0.035 * 0.18);
+
+        std::cout << "RenderQueue: " << scene->renderQueue.size() << std::endl;
+        std::cout << glm::to_string(plys->getTRS()) << std::endl;
+
+        for (int i = 0; i < camposes.size(); i++) {
+            AISTER_GRAPHICS_ENGINE::Camera cam;
+            cam.position = camposes[i];
+            cam._far = 1000.f;
+
+            cam.screenResolution = resolution;
+
+            scene->setCamera(cam);
+            scene->Render(false);
+            scene->saveToPNG(folderPath + "/" + std::to_string(i) + "_RGB.png");
+            scene->Render(true);
+            scene->saveToPNG(folderPath + "/" + std::to_string(i) + "_depth.png");
+        }
+    }
+    
     std::vector<glm::vec3> CameraPositions(int n1, int n2, float r) {
 
         std::vector<glm::vec3> positionList;

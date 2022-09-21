@@ -11,70 +11,71 @@ C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\plyData.h(52,16): w
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\plyData.h(54,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\plyData.h(56,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\plyData.h(58,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(63,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(81,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(95,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(28,77): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(65,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(83,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Renderer.h(97,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(30,77): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(30,78): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(32,78): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(30,58): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(32,58): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(76,72): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(78,72): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(76,52): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(78,52): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(82,93): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(84,93): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(82,73): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(84,73): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(89,113): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(91,113): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(89,93): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(91,93): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(105,62): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(107,62): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(105,42): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Scene.h(107,42): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(19,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(85,88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(99,119): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(39,92): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(65,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(86,88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(98,119): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  1 of 703 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  5 of 730 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    47 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   ply_to_feature.vcxproj -> C:\Users\Ataraxia\source\repos\ply_to_feature\x64\Release\ply_to_feature.exe

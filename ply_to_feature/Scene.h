@@ -11,6 +11,7 @@
 namespace AISTER_GRAPHICS_ENGINE {
     class Scene {
     public:
+        std::string name;
         unsigned int fbo;
         GLuint RenderTexture;
         
@@ -22,12 +23,13 @@ namespace AISTER_GRAPHICS_ENGINE {
         glm::vec2 renderResolution;
         uchar* renderImage;
 
-        Scene(glm::vec2 _RenderResolution) {
+        Scene(glm::vec2 _RenderResolution, std::string name = "Hdden window") {
             renderResolution = _RenderResolution;
+            this->name = name;
 
             renderImage = new uchar[renderResolution.x * renderResolution.y * 4];
 
-            (windows) = glfwCreateWindow(renderResolution.x, renderResolution.y, "Hidden window", nullptr, nullptr);
+            (windows) = glfwCreateWindow(renderResolution.x, renderResolution.y, name.c_str(), nullptr, nullptr);
             glfwHideWindow(windows);
 
             genFrameBuffers();
@@ -63,7 +65,7 @@ namespace AISTER_GRAPHICS_ENGINE {
             while (!glfwWindowShouldClose(windows) && a++ <=2) {
                 glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClearColor(0.1f, 0.2f, 0.2f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////

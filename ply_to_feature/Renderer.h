@@ -26,6 +26,8 @@ namespace AISTER_GRAPHICS_ENGINE {
 			initShader();
 		}
 
+		PLYdata* getPlyDataPtr() { return data; }
+
 		void initShader() {
 			glGenVertexArrays(1, &(this->VAO));
 			glGenBuffers(1, &(this->VBO));
@@ -67,7 +69,7 @@ namespace AISTER_GRAPHICS_ENGINE {
 			shader->call();
 
 			glm::mat4 trs = data->getTRS();
-			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0,0,0), glm::vec3(0,0,1)) * trs;
+			glm::mat4 MVPmat = cam.getProjectionMatrix() * cam.getViewMatrix(glm::vec3(0,0,0), glm::vec3(0,1,0)) * trs;
 
 			GLuint location_MVP = glGetUniformLocation(shader->shaderProgram, "MVP");
 			glUniformMatrix4fv(location_MVP, 1, GL_FALSE, &MVPmat[0][0]);

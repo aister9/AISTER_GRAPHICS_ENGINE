@@ -44,7 +44,6 @@ bool glfwewInit(GLFWwindow** window, int width, int height) {
     return true;
 }
 
-
 int main(int argc, char* args[]) {
 
     GLFWwindow* window;
@@ -80,7 +79,9 @@ int main(int argc, char* args[]) {
     test.Render(true);
     test.saveToPNG("test2.png");
     
-    Keypoint_utils utils;
+    Keypoint_utils utils(glm::vec2(640, 480));
+    utils.Init("example/Cherries.ply", "example/Cherries.png");
+    utils.save_render_image("render");
     
     vector<glm::vec3> camposes = utils.CameraPositions(3, 3, plys.get_r_bbox() / 0.035 * 0.18);
 
