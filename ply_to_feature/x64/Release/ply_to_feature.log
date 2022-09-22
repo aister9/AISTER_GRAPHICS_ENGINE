@@ -112,75 +112,93 @@ C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(63
           ]
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(67,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(105,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(112,65): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(113,65): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(113,90): warning C4244: 'argument': conversion from 'T' to 'size_t', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(114,90): warning C4244: 'argument': conversion from 'T' to 'size_t', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(115,52): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(116,52): warning C4244: 'initializing': conversion from 'T' to 'size_t', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(116,78): warning C4244: 'argument': conversion from 'T' to 'size_t', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(117,78): warning C4244: 'argument': conversion from 'T' to 'size_t', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(125,92): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(132,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(147,45): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(126,92): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(133,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(149,45): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(147,31): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(149,31): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(168,50): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(163,63): warning C4244: 'argument': conversion from '_Tp' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(163,53): warning C4244: 'argument': conversion from '_Tp' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(170,50): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(168,36): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(170,36): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(173,64): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(175,64): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(173,57): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(175,57): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(174,65): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(176,65): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(174,58): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(176,58): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(181,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(203,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(183,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\keypoint_utils.h(206,1): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(85,88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ataraxia\source\repos\ply_to_feature\ply_to_feature\Main.cpp(93,119): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  3 of 982 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  4 of 991 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    20 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   ply_to_feature.vcxproj -> C:\Users\Ataraxia\source\repos\ply_to_feature\x64\Release\ply_to_feature.exe

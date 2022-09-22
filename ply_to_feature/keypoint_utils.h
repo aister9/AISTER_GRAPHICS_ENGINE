@@ -104,6 +104,7 @@ public:
             AISTER_GRAPHICS_ENGINE::Camera cam;
             cam.setFOV_K(572.4124, 573.5692, 640, 480, 0.005f, 4.5f);
             cam.position = camposes[i];
+            cam.direction = glm::mat3(getCameraPose(camposes[i])) * cam.direction;
 
             cam.screenResolution = resolution;
 
@@ -131,6 +132,7 @@ public:
             AISTER_GRAPHICS_ENGINE::Camera cam;
             cam.setFOV_K(572.4124, 573.5692, 640, 480, 0.005f, 4.5f);
             cam.position = camposes[i];
+            cam.direction = glm::mat3(getCameraPose(camposes[i])) * cam.direction;
 
             cam.screenResolution = resolution;
 
@@ -158,7 +160,7 @@ public:
         std::vector<glm::vec2> kpts_xys;
         for (auto kpt : kpts) {
             kpts_xys.push_back(glm::vec2(kpt.pt.x, kpt.pt.y));
-            //cv::circle(outputImage, cv::Point(kpt.pt.x, kpt.pt.y), 5, cv::Scalar(255, 255, 0), -1, 8, 0);
+            cv::circle(outputImage, cv::Point(kpt.pt.x, kpt.pt.y), 5, cv::Scalar(255, 0, 0));
         }
 
         glm::mat4 K(glm::vec4(572.4124, 0, 0, 0), glm::vec4(0, 573.5692, 0, 0), glm::vec4(320, 240, 1, 0), glm::vec4(0, 0, 0, 1));
@@ -183,13 +185,14 @@ public:
 
         cam.screenResolution = resolution;
 
-        glm::mat4 c2w = get_c2w(getCameraPose(composes));
-        glm::mat4 w2o = glm::inverse(glm::translate(glm::mat4(1.0f), plys->position) * glm::toMat4(plys->rotation));
+        glm::mat4 w2c = get_c2w(getCameraPose(composes));
+        glm::mat4 o2w = (glm::translate(glm::mat4(1.0f), plys->position) * glm::toMat4(plys->rotation));
 
         for (auto& kpt : pcd_dpt) {
-            kpt = c2w * glm::vec4(kpt,1.0);
-            kpt = w2o * glm::vec4(kpt,1.0);
+            kpt = w2c*o2w * glm::vec4(kpt,1.0);
         }
+
+        cv::imwrite("kptsTest.png", outputImage);
 
         return pcd_dpt;
     }
@@ -234,7 +237,7 @@ public:
         y_direct = glm::normalize(y_direct);
 
         glm::mat3 pose(x_direct, y_direct, z_direct);
-        pose = glm::inverse(pose);
+        //pose = glm::transpose(pose);
 
         eyes = glm::translate(glm::mat4(1.0f), cameraPosition) * glm::mat4(pose);
 
