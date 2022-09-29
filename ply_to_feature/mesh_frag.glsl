@@ -24,7 +24,7 @@ void main() {
 		color = texture(textures, TexCoord);
 	else {
 		// depth = LinearizeDepth(gl_FragCoord.z) / far; // divide by far for demonstration
-		float depth = gl_FragCoord.z; // divide by far for demonstration
+		float depth = gl_FragCoord.w; // divide by far for demonstration
 		color = vec4(vec3(depth), 1.0);
 	}
 }

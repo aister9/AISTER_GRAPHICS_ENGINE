@@ -54,6 +54,27 @@ public:
         for (auto vv : plys->get_3d_bbox().getCorner()) {
             std::cout << glm::to_string(vv) << std::endl;
         }
+        std::ofstream output("keypts.txt");
+
+        for (auto vv : fartest_point_8) {
+            output << vv.x << " " << vv.y << " " << vv.z << std::endl;
+        }
+        output.close();
+
+        output.open("corners.txt");
+        for (auto vv : plys->get_3d_bbox().getCorner()) {
+            output << vv.x << " " << vv.y << " " << vv.z << std::endl;
+        }
+        output.close();
+    }
+
+    void ValidationPoints(std::vector<glm::vec3> pts, uchar* imageRaw, glm::vec3 camposes) {
+        cv::Mat img(resolution.y, resolution.x, CV_8UC4, imageRaw);
+
+        AISTER_GRAPHICS_ENGINE::Camera cam;
+        cam.setFOV_K(572.4124, 573.5692, 640, 480, 0.005f, 4.5f);
+        cam.position = camposes;
+        cam.direction = glm::mat3(getCameraPose(camposes)) * cam.direction;
     }
 
     std::vector<glm::vec3> fartest_point_sampling(std::vector<glm::vec3> pts, int sn) {
@@ -172,24 +193,32 @@ public:
         cv::flip(depthMap, flipedDepth, 0);
 
         for(auto kpt : kpts_xys){
-            glm::vec4 pts(kpt, flipedDepth.at<float>(kpt.y, kpt.x), 1.0f);
-            glm::vec3 pcd_pts = flipedDepth.at<float>(kpt.y, kpt.x) * K_inv * pts;
+            glm::vec4 pts(kpt, 1/flipedDepth.at<float>(kpt.y, kpt.x), 1.0f);
+            glm::vec3 pcd_pts = 1/flipedDepth.at<float>(kpt.y, kpt.x) * K_inv * pts;
+
+            pts.x = pts.x / resolution.x * 2 - 1;
+            pts.y = (resolution.y - pts.y) / resolution.y * 2 - 1;
 
             if(!glm::isinf(kpt.x) && pcd_pts.z >1e-8)
-                pcd_dpt.push_back(pcd_pts);
+                pcd_dpt.push_back(glm::vec3(pts));
         }
 
         AISTER_GRAPHICS_ENGINE::Camera cam;
         cam.setFOV_K(572.4124, 573.5692, 640, 480, 0.005f, 4.5f);
         cam.position = composes;
+        cam.direction = glm::mat3(getCameraPose(composes)) * cam.direction;
 
         cam.screenResolution = resolution;
 
-        glm::mat4 w2c = get_c2w(getCameraPose(composes));
-        glm::mat4 o2w = (glm::translate(glm::mat4(1.0f), plys->position) * glm::toMat4(plys->rotation));
+        glm::mat4 mvp = cam.getProjectionMatrix() * cam.getViewMatrix() * plys->getTRS();
+        glm::mat4 c2w = glm::inverse(cam.getProjectionMatrix() * cam.getViewMatrix());
+        glm::mat4 w2o = glm::inverse(plys->getTRS());
+
 
         for (auto& kpt : pcd_dpt) {
-            kpt = w2c*o2w * glm::vec4(kpt,1.0);
+            glm::vec4 value = glm::inverse(cam.getProjectionMatrix()) * glm::vec4(kpt,1.0);
+            kpt = glm::inverse(cam.getViewMatrix())*glm::vec4(value.x, value.y, -kpt.z, 1);
+            kpt = kpt - plys->position;
         }
 
         cv::imwrite("kptsTest.png", outputImage);

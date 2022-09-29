@@ -56,12 +56,18 @@
     <ClInclude Include="keypoint_utils.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="HOPE_Mask_Generator.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="mesh_vertex.glsl">
       <Filter>Resource Files\Shader</Filter>
     </None>
     <None Include="mesh_frag.glsl">
+      <Filter>Resource Files\Shader</Filter>
+    </None>
+    <None Include="mesh_mask.glsl">
       <Filter>Resource Files\Shader</Filter>
     </None>
   </ItemGroup>
